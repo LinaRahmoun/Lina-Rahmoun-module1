@@ -1,0 +1,105 @@
+# Lina-Rahmoun-module1
+public class Fan {
+    // Constants for fan speed
+    public static final int STOPPED = 0;
+    public static final int SLOW = 1;
+    public static final int MEDIUM = 2;
+    public static final int FAST = 3;
+
+    private int speed;
+    private boolean on;
+    private double radius;
+    private String color;
+
+    // Default constructor
+    public Fan() {
+        this.speed = STOPPED;
+        this.on = false;
+        this.radius = 6.0;
+        this.color = "white";
+    }
+
+    // Parameterized constructor
+    public Fan(int speed, boolean on, double radius, String color) {
+        this.speed = speed;
+        this.on = on;
+        this.radius = radius;
+        this.color = color;
+    }
+
+    // Getter and Setter methods
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public boolean isOn() {
+        return on;
+    }
+
+    public void setOn(boolean on) {
+        this.on = on;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    // toString() method to display fan information
+    @Override
+    public String toString() {
+        String status = on ? "on" : "off";
+        return String.format("Fan is %s\nSpeed: %s\nRadius: %.1f\nColor: %s", status, getSpeedString(), radius, color);
+    }
+
+    // Helper method to convert speed constant to a string
+    private String getSpeedString() {
+        switch (speed) {
+            case STOPPED:
+                return "STOPPED";
+            case SLOW:
+                return "SLOW";
+            case MEDIUM:
+                return "MEDIUM";
+            case FAST:
+                return "FAST";
+            default:
+                return "INVALID";
+        }
+    }
+
+    public static void main(String[] args) {
+        // Create a Fan instance using the default constructor
+        Fan defaultFan = new Fan();
+        System.out.println("Default Fan:");
+        System.out.println(defaultFan);
+
+        // Create a Fan instance using the argument constructor
+        Fan customFan = new Fan(Fan.MEDIUM, true, 8.0, "blue");
+        System.out.println("\nCustom Fan:");
+        System.out.println(customFan);
+
+        // Demonstrate setting and getting fields
+        customFan.setSpeed(Fan.FAST);
+        customFan.setRadius(10.0);
+        customFan.setColor("red");
+        customFan.setOn(false);
+        System.out.println("\nUpdated Custom Fan:");
+        System.out.println(customFan);
+    }
+}
